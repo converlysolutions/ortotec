@@ -1,0 +1,325 @@
+/* ============ Ortotec · sistema de diseño ============ */
+:root{
+  --ink:#0A1520;
+  --ink-2:#16262F;
+  --paper:#FBFAF8;
+  --paper-2:#F3F1ED;
+  --paper-3:#EAE7E1;
+  --line:rgba(10,21,32,.13);
+  --line-soft:rgba(10,21,32,.07);
+  --accent:#0E6E75;
+  --accent-2:#0A5158;
+  --accent-wash:#E7F0EF;
+  --muted:#5C6B73;
+  --radius:3px;
+  --maxw:1240px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 1px 2px rgba(10,21,32,.04), 0 12px 40px -18px rgba(10,21,32,.22);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-weight:400;
+}
+h1,h2,h3,h4{font-family:Fraunces,Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(2.15rem,5.4vw,4.6rem);overflow-wrap:break-word}
+h2{font-size:clamp(1.75rem,3.6vw,3.1rem);overflow-wrap:break-word}
+h3{font-size:clamp(1.15rem,1.6vw,1.4rem);letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+::selection{background:var(--accent);color:#fff}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+.section{padding:clamp(72px,9vw,140px) 0}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:20px;
+}
+.lead{font-size:clamp(1.02rem,1.25vw,1.16rem);color:var(--muted);max-width:62ch;line-height:1.75}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:var(--radius);
+  border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  font-size:.86rem;letter-spacing:.03em;font-weight:500;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+.btn--light{background:transparent;color:var(--paper);border-color:rgba(251,250,248,.35)}
+.btn--light:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- nav ---------- */
+/* Marca los primeros 40 px del documento: mientras esté a la vista, la
+   barra se mantiene transparente sobre la portada. */
+.nav__centinela{position:absolute;top:0;left:0;width:1px;height:40px;pointer-events:none}
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .4s var(--ease),backdrop-filter .4s}
+.nav__in{display:flex;align-items:center;justify-content:space-between;height:76px;border-bottom:1px solid transparent;transition:border-color .4s var(--ease),height .4s var(--ease)}
+.nav.solid{background:rgba(251,250,248,.86);backdrop-filter:saturate(1.6) blur(14px)}
+.nav.solid .nav__in{border-color:var(--line-soft);height:66px}
+.nav__links{display:flex;gap:34px;align-items:center}
+.nav__links a{font-size:.85rem;color:var(--ink-2);position:relative;padding:4px 0;opacity:.85}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:width .4s var(--ease)}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover::after{width:100%}
+.nav__cta{padding:10px 20px;font-size:.82rem}
+.burger{display:none;background:none;border:0;padding:8px;color:var(--ink)}
+.mobilemenu{display:none}
+
+/* ---------- logo ---------- */
+.logo{display:block;line-height:1}
+.logo__txt{display:block;font-family:Fraunces,serif;font-size:1.3rem;letter-spacing:.06em;line-height:1}
+.logo__sub{display:block;font-family:Inter,sans-serif;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.logo--light .logo__txt{color:#fff}
+.logo--light .logo__sub{color:rgba(243,241,237,.5)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--paper)}
+.hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center;width:100%;padding-top:90px}
+.hero h1{margin-bottom:26px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero__actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+
+.hero__meta{display:flex;gap:44px;margin-top:56px;padding-top:26px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+.hero__meta div span{display:block;font-family:Fraunces,serif;font-size:1.85rem;line-height:1}
+.hero__meta div small{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hero__glow{position:absolute;width:60vw;height:60vw;right:-16vw;top:-14vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,110,117,.10),transparent 62%);pointer-events:none}
+
+
+/* ---------- especialidades ---------- */
+.espec{list-style:none;display:flex;flex-wrap:wrap;gap:0 22px;padding:0;
+  margin:38px 0 0;font-size:.83rem;color:var(--muted)}
+.espec li{position:relative;padding-right:22px}
+.espec li::after{content:"";position:absolute;right:0;top:.55em;width:1px;height:.85em;background:var(--line)}
+.espec li:last-child{padding-right:0}
+.espec li:last-child::after{display:none}
+
+/* ---------- split ---------- */
+.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,7vw,110px);align-items:start}
+.split--rev{grid-template-columns:1.15fr .85fr}
+
+/* ---------- catálogo ---------- */
+.cat{display:grid;grid-template-columns:340px 1fr;gap:0;border:1px solid var(--line);background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.cat__list{border-right:1px solid var(--line);background:var(--paper);max-height:720px;overflow:auto}
+.cat__item{
+  display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line-soft);
+  padding:22px 26px;transition:background .3s var(--ease);position:relative;
+}
+.cat__item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .4s var(--ease);transform-origin:top}
+.cat__item:hover{background:var(--paper-2)}
+.cat__item.on{background:#fff}
+.cat__item.on::before{transform:scaleY(1)}
+.cat__item h4{font-family:Inter,sans-serif;font-size:.95rem;font-weight:500;margin:0 0 4px;letter-spacing:0}
+.cat__item.on h4{color:var(--accent-2)}
+.cat__item p{font-size:.79rem;color:var(--muted);line-height:1.5}
+.cat__item small{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.75;display:block;margin-bottom:7px}
+.cat__stage{position:relative;display:grid;grid-template-rows:auto 1fr}
+.cat__info{padding:28px 34px 32px;border-top:1px solid var(--line-soft);background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.cat__info h3{margin-bottom:10px}
+.cat__info p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.ficha{display:flex;flex-wrap:wrap;gap:0 26px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.ficha div{padding-right:26px;border-right:1px solid var(--line-soft)}
+.ficha div:last-child{border-right:0;padding-right:0}
+.ficha small{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ficha span{font-size:.88rem;color:var(--ink-2)}
+/* ---------- huecos de imagen ---------- */
+.figura{
+  position:relative;margin:0;overflow:hidden;background:var(--paper-2);
+  border:1px solid var(--line-soft);display:grid;place-items:center;
+}
+.figura img{width:100%;height:100%;object-fit:cover;display:block}
+.figura__vacia{
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  text-align:center;padding:0 24px;opacity:.75;
+}
+/* trama diagonal discreta: se lee como hueco reservado, no como error */
+.figura:not(:has(img))::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(-45deg,transparent 0 11px,rgba(10,21,32,.035) 11px 12px);
+}
+.figura--hero{border-radius:var(--radius)}
+/* Foto recortada: sin marco ni fondo, apoyada sobre la página con una
+   sombra suave que le devuelve el peso que pierde al perder el fondo. */
+.figura--recorte{
+  background:none;border:0;overflow:visible;
+}
+.figura--recorte img{
+  object-fit:contain;
+  filter:drop-shadow(0 26px 34px rgba(10,21,32,.20)) drop-shadow(0 4px 8px rgba(10,21,32,.10));
+}
+.figura--cat{border:0;border-bottom:1px solid var(--line-soft);background:var(--paper)}
+
+/* ---------- grid de tarjetas ---------- */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:64px}
+.card{background:var(--paper);padding:34px 28px;transition:background .4s var(--ease)}
+.card:hover{background:#fff}
+.card__n{font-size:.7rem;letter-spacing:.18em;color:var(--muted);margin-bottom:24px;display:block}
+.card h3{margin-bottom:12px}
+.card p{font-size:.92rem;color:var(--muted)}
+
+/* ---------- laboratorio (oscuro) ---------- */
+.dark{background:var(--ink);color:var(--paper-2)}
+.dark h2,.dark h3{color:#fff}
+.dark .lead,.dark p{color:rgba(243,241,237,.66)}
+.dark .eyebrow{color:#5FB3B8}
+.dark .rule{background:rgba(255,255,255,.12)}
+.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);margin-top:70px;border:1px solid rgba(255,255,255,.12)}
+.spec{background:var(--ink);padding:32px 26px}
+.spec span{display:block;font-family:Fraunces,serif;font-size:2.3rem;color:#fff;line-height:1;margin-bottom:10px}
+.spec small{font-size:.75rem;color:rgba(243,241,237,.55);letter-spacing:.04em}
+.equip{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:0}
+.equip li{padding:16px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:20px;font-size:.92rem;align-items:baseline}
+.equip li:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.equip li b{font-weight:500;color:#fff}
+.equip li span{color:rgba(243,241,237,.5);font-size:.8rem;text-align:right}
+
+/* ---------- proceso ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:70px}
+.step{position:relative;padding-top:26px;border-top:1px solid var(--ink)}
+
+.step b{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:500}
+.step h3{margin-bottom:10px}
+.step p{font-size:.9rem;color:var(--muted)}
+
+
+/* ---------- contacto ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,6vw,90px)}
+.info{display:grid;gap:0;margin-top:40px}
+.info__row{padding:20px 0;border-top:1px solid var(--line)}
+.info__row:last-child{border-bottom:1px solid var(--line)}
+.info__row small{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.info__row a,.info__row p{font-size:1.02rem}
+.info__row a:hover{color:var(--accent)}
+.form{background:#fff;border:1px solid var(--line);padding:clamp(28px,3.4vw,44px);border-radius:var(--radius);box-shadow:var(--shadow)}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.field input,.field textarea,.field select{
+  width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--paper);font:inherit;font-size:.94rem;color:var(--ink);transition:border-color .3s var(--ease),background .3s var(--ease);
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--accent);background:#fff}
+.field textarea{resize:vertical;min-height:118px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.form__ok{color:var(--accent-2);font-size:.86rem;margin-top:16px;text-align:center}
+.legal{font-size:.72rem;color:var(--muted);margin-top:16px;line-height:1.6}
+
+/* ---------- footer ---------- */
+.footer{background:var(--ink);color:rgba(243,241,237,.6);padding:80px 0 34px}
+.footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
+.footer h5{font-family:Inter,sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin:0 0 18px;font-weight:500}
+.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:11px;font-size:.9rem}
+.footer a:hover{color:#fff}
+.footer p{font-size:.9rem;max-width:34ch}
+.footer .logo__txt{color:#fff}
+.footer .logo__sub{color:rgba(243,241,237,.45)}
+.footer__bot{border-top:1px solid rgba(255,255,255,.12);padding-top:26px;display:flex;justify-content:space-between;gap:20px;font-size:.76rem;flex-wrap:wrap}
+.social{display:flex;gap:14px}
+.social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:grid;place-items:center;transition:.3s var(--ease)}
+.social a:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+/* ---------- responsive ---------- */
+
+/* Los titulares llevan saltos de línea forzados para componer bien en
+   pantallas anchas; por debajo de 1080 px el texto fluye solo. */
+@media (max-width:1080px){
+  h1 br,h2 br{display:none}
+}
+
+/* La barra completa deja de caber bastante antes que el resto del layout */
+@media (max-width:900px){
+  .nav__links,.nav__cta{display:none}
+  .burger{display:block}
+}
+
+@media (max-width:1200px){
+  .nav__links{gap:24px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:1080px){
+  .hero{min-height:0;padding:120px 0 clamp(56px,8vw,90px)}
+  .hero__grid{grid-template-columns:1fr;gap:38px;padding-top:0}
+  .figura--hero{aspect-ratio:16/9;max-height:52vh}
+  .steps,.specs{grid-template-columns:repeat(2,1fr)}
+  .split,.split--rev,.contact{grid-template-columns:1fr;gap:34px}
+  .footer__top{grid-template-columns:1fr 1fr;gap:36px}
+
+  /* El catálogo pasa de dos columnas a lista horizontal deslizable */
+  .cat{grid-template-columns:1fr}
+  .cat__list{
+    border-right:0;border-bottom:1px solid var(--line);
+    display:flex;overflow-x:auto;max-height:none;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  }
+  .cat__item{min-width:250px;border-bottom:0;border-right:1px solid var(--line-soft);scroll-snap-align:start}
+  .cat__item::before{width:100%;height:2px;bottom:auto;transform:scaleX(0);transform-origin:left}
+  .cat__item.on::before{transform:scaleX(1)}
+}
+
+@media (max-width:860px){
+  .hero__meta{gap:32px}
+  .equip li{flex-direction:column;gap:4px}
+  .equip li span{text-align:left}
+  .footer__top{grid-template-columns:1fr;gap:34px}
+  .footer p{max-width:none}
+}
+
+@media (max-width:720px){
+  .wrap{padding:0 20px}
+  .mobilemenu{
+    display:block;position:fixed;inset:0;z-index:55;background:var(--paper);
+    padding:104px 24px 40px;overflow-y:auto;
+    transform:translateY(-102%);transition:transform .5s var(--ease);
+  }
+  .mobilemenu.open{transform:none}
+  .mobilemenu a{
+    display:block;font-family:Fraunces,serif;font-size:1.75rem;
+    padding:16px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .mobilemenu .btn{width:100%;justify-content:center;margin-top:28px;border-bottom:0}
+
+  .cards,.steps,.specs,.two{grid-template-columns:1fr}
+  .card{padding:30px 24px}
+  .spec{padding:26px 22px}
+  .spec span{font-size:2rem}
+  .step{padding-top:22px}
+  .hero__actions{gap:10px}
+  .hero__actions .btn{flex:1 1 auto;justify-content:center}
+  .hero__meta{gap:26px;margin-top:38px}
+  .hero__meta div span{font-size:1.55rem}
+  .cat__info{padding:24px 22px 26px}
+  .form{padding:26px 22px}
+  .figura--hero{aspect-ratio:4/3;max-height:44vh}
+}
+
+@media (max-width:520px){
+  h1{font-size:2.15rem}
+  h2{font-size:1.75rem}
+  .lead{font-size:1rem}
+  .espec{gap:0 16px;font-size:.79rem}
+  .espec li{padding-right:16px}
+  /* La ficha técnica apila: en una línea no caben tres columnas legibles */
+  .ficha{flex-direction:column;gap:14px;margin-top:18px}
+  .ficha div{padding-right:0;border-right:0}
+  .hero__meta{gap:0 24px}
+  .footer__bot{flex-direction:column;gap:10px}
+  .cat__item{min-width:210px;padding:18px 20px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  .mobilemenu{transition:none}
+  html{scroll-behavior:auto}
+}
