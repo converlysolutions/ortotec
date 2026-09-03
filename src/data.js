@@ -20,7 +20,7 @@ export const CONTACTO = {
 export const PRODUCTOS = [
   {
     id: 'brackets',
-    // Foto del producto: /public/img/catalogo/montaje-indirecto.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): montaje-indirecto.jpg
     img: '',
     familia: 'Aparatología fija',
     nombre: 'Montaje indirecto',
@@ -36,7 +36,7 @@ export const PRODUCTOS = [
   },
   {
     id: 'aligner',
-    // Foto del producto: /public/img/catalogo/alineadores.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): alineadores.jpg
     img: '',
     familia: 'Ortodoncia invisible',
     nombre: 'Alineadores',
@@ -52,7 +52,7 @@ export const PRODUCTOS = [
   },
   {
     id: 'hawley',
-    // Foto del producto: /public/img/catalogo/placa-hawley.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): placa-hawley.jpg
     img: '',
     familia: 'Aparatología removible',
     nombre: 'Placa Hawley',
@@ -68,7 +68,7 @@ export const PRODUCTOS = [
   },
   {
     id: 'splint',
-    // Foto del producto: /public/img/catalogo/ferula-descarga.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): ferula-descarga.jpg
     img: '',
     familia: 'Férulas',
     nombre: 'Férula de descarga',
@@ -84,7 +84,7 @@ export const PRODUCTOS = [
   },
   {
     id: 'expander',
-    // Foto del producto: /public/img/catalogo/expansor.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): expansor.jpg
     img: '',
     familia: 'Ortopedia maxilar',
     nombre: 'Disyuntor y expansor',
@@ -100,7 +100,7 @@ export const PRODUCTOS = [
   },
   {
     id: 'lingual',
-    // Foto del producto: /public/img/catalogo/retenedor-fijo.jpg
+    // Foto del producto, p. ej. img('catalogo/montaje-indirecto.jpg'): retenedor-fijo.jpg
     img: '',
     familia: 'Retención',
     nombre: 'Retenedor fijo',
@@ -117,10 +117,15 @@ export const PRODUCTOS = [
 ]
 
 /* Rutas de las fotografías. Vacías = se muestra el hueco con su pie.
-   Al añadir el archivo en /public/img/, poner aquí la ruta:
-   hero: '/img/hero.jpg'  */
+   Al añadir el archivo en /public/img/, poner aquí su nombre:
+   hero: img('hero.jpg')
+
+   `img()` antepone la base del sitio. Hace falta porque en GitHub Pages la
+   web no cuelga de la raíz del dominio sino de /ortotec/, y una ruta escrita
+   a mano como '/img/foto.webp' daría 404 allí aunque funcione en local. */
+export const img = (archivo) => (archivo ? import.meta.env.BASE_URL + 'img/' + archivo : '')
 export const IMAGENES = {
-  hero: '/img/hawley-personalizada.webp',
+  hero: img('hawley-personalizada.webp'),
   laboratorio: '',
 }
 
