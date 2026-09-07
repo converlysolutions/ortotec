@@ -1,4 +1,4 @@
-import { CONTACTO, ESPECIALIDADES, IMAGENES } from '../data'
+import { CONTACTO, DESCRIPCION, ESPECIALIDADES, IMAGENES } from '../data'
 import Figura from './Figura'
 
 export default function Hero() {
@@ -13,7 +13,7 @@ export default function Hero() {
             hecha a medida.
           </h1>
           <p className="lead">
-            Fabricamos aparatología fija, removible y ortopedia maxilar para
+            {DESCRIPCION} Fabricamos aparatología fija, removible y ortopedia maxilar para
             clínicas y ortodoncistas. Trabajamos con impresión convencional y
             con archivos de escáner intraoral, y entregamos cada caso revisado
             pieza a pieza.
@@ -35,16 +35,12 @@ export default function Hero() {
 
           <div className="hero__meta">
             <div>
-              <span>1998</span>
-              <small>En activo desde</small>
-            </div>
-            <div>
-              <span>180</span>
-              <small>Clínicas</small>
-            </div>
-            <div>
               <span>48 h</span>
               <small>Reparaciones</small>
+            </div>
+            <div>
+              <span>Madrid</span>
+              <small>Recogida y entrega propias</small>
             </div>
           </div>
         </div>

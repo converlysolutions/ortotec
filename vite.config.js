@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
@@ -14,5 +15,15 @@ export default defineConfig({
     // un solo push publica, sin ramas ni acciones adicionales.
     outDir: 'docs',
     emptyOutDir: true,
+
+    // Dos páginas independientes: la web y la tarjeta de contacto que se
+    // enlaza desde el QR. `card/index.html` se publica en /card/, sin
+    // extensión en la URL y sin necesidad de enrutador en cliente.
+    rollupOptions: {
+      input: {
+        main: resolve(import.meta.dirname, 'index.html'),
+        card: resolve(import.meta.dirname, 'card/index.html'),
+      },
+    },
   },
 })

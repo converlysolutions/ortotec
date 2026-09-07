@@ -1,4 +1,4 @@
-import { CONTACTO, PRODUCTOS } from '../data'
+import { CONTACTO, DESCRIPCION, PRODUCTOS } from '../data'
 import Logo from './Logo'
 
 export default function Footer() {
@@ -9,8 +9,8 @@ export default function Footer() {
           <div>
             <Logo light />
             <p style={{ marginTop: 20 }}>
-              Laboratorio de ortodoncia en {CONTACTO.ciudad}. Aparatología fija,
-              removible y flujo digital para clínicas y ortodoncistas.
+              {DESCRIPCION} Aparatología fija, removible y flujo digital para
+              clínicas y ortodoncistas en {CONTACTO.ciudad}.
             </p>
             <div className="social" style={{ marginTop: 26 }}>
               <a href={CONTACTO.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">

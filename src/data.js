@@ -1,12 +1,17 @@
 /* Contenido editable de la web. Todo el texto vive aquí para que el
    cliente pueda revisarlo y ajustarlo sin tocar los componentes. */
 
+/* Descripción oficial del laboratorio, en palabras del cliente. Se usa
+   tal cual en la web y en la tarjeta de presentación (/card). */
+export const DESCRIPCION =
+  'Laboratorio dental especializado en ortodoncia y férulas de descarga.'
+
 export const CONTACTO = {
   empresa: 'Ortotec',
   claim: 'Laboratorio de ortodoncia',
   ciudad: 'Madrid',
   // ⚠️ Datos de ejemplo: sustituir por los reales antes de publicar
-  direccion: 'Calle Ejemplo, 00 · 28000 Madrid',
+  direccion: 'C/ Sambara, 153 · Local · 28027 Madrid',
   telefono: '+34 900 000 000',
   telefonoHref: '+34900000000',
   whatsapp: '34900000000',
@@ -188,8 +193,6 @@ export const PROCESO = [
 ]
 
 export const SPECS = [
-  { n: '1998', t: 'Año de apertura del laboratorio' },
-  { n: '180', t: 'Clínicas y ortodoncistas activos' },
   { n: '48 h', t: 'Plazo en reparaciones urgentes' },
   { n: '6', t: 'Técnicos en plantilla' },
 ]

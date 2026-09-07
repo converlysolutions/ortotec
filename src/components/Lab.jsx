@@ -1,4 +1,4 @@
-import { SPECS, EQUIPO } from '../data'
+import { DESCRIPCION, SPECS, EQUIPO } from '../data'
 import Reveal from './Reveal'
 
 export default function Lab() {
@@ -12,11 +12,12 @@ export default function Lab() {
               <h2>El laboratorio</h2>
             </div>
             <div>
-              <p className="lead">
-                Ortotec es un laboratorio de ortodoncia con sede en Madrid.
-                Trabajamos con un volumen de casos que nos permite revisar uno
-                a uno antes de que salgan por la puerta, porque un aparato que
-                no ajusta cuesta una cita más al paciente y al ortodoncista.
+              <p className="lead lead--destacado">{DESCRIPCION}</p>
+              <p className="lead" style={{ marginTop: 20 }}>
+                Ortotec tiene su sede en Madrid y trabaja con un volumen de
+                casos que permite revisar uno a uno antes de que salgan por la
+                puerta, porque un aparato que no ajusta cuesta una cita más al
+                paciente y al ortodoncista.
               </p>
               <p className="lead" style={{ marginTop: 20 }}>
                 Aceptamos tanto impresiones convencionales como archivos de
